@@ -1451,10 +1451,6 @@ pathtype := ""
 ifdef ESMF_NETCDF
   pathtype := $(shell $(ESMF_DIR)/scripts/pathtype $(ESMF_NETCDF))
 endif
-ifeq ($(pathtype),abs)
-  # use the $(ESMF_NETCDF) contents as nc-config
-  ESMF_NCCONFIG = $(ESMF_NETCDF)
-endif
 ifeq ($(ESMF_NETCDF),nc-config)
   ESMF_NCCONFIG = $(ESMF_NETCDF)
 endif
