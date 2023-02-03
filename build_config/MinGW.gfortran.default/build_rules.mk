@@ -96,6 +96,8 @@ endif
 ifeq ($(ESMF_ABI),64)
 ESMF_ABISTRING := x86_64_small
 endif
+else ifeq ($(ESMF_MACHINE),x86_64)
+ESMF_ABISTRING := x86_64_small
 else
 $(error "ESMF_MACHINE = $(ESMF_MACHINE)" not recognized)
 endif
