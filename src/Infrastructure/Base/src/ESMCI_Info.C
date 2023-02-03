@@ -840,6 +840,7 @@ template float Info::get(key_t&, const float*, const int*, bool, std::string*, b
 template double Info::get(key_t&, const double*, const int*, bool, std::string*, bool) const;
 template int Info::get(key_t&, const int*, const int*, bool, std::string*, bool) const;
 template long int Info::get(key_t&, const long int*, const int*, bool, std::string*, bool) const;
+template long long Info::get(key_t&, const long long*, const int*, bool, std::string*, bool) const;
 template bool Info::get(key_t&, const bool*, const int*, bool, std::string*, bool) const;
 template std::string Info::get(key_t&, const std::string*, const int*, bool, std::string*, bool) const;
 template json Info::get(key_t&, const json*, const int*, bool, std::string*, bool) const;
@@ -1389,6 +1390,7 @@ template void Info::set<float>(key_t&, float, bool, const int*, const key_t * co
 template void Info::set<double>(key_t&, double, bool, const int*, const key_t * const);
 template void Info::set<int>(key_t&, int, bool, const int*, const key_t * const);
 template void Info::set<long int>(key_t&, long int, bool, const int*, const key_t * const);
+template void Info::set<long long>(key_t&, long long, bool, const int*, const key_t * const);
 template void Info::set<std::string>(key_t&, std::string, bool, const int*, const key_t * const);
 template void Info::set<bool>(key_t&, bool, bool, const int*, const key_t * const);
 
@@ -1421,6 +1423,7 @@ template void Info::set<float>(key_t&, float*, int, bool, const key_t * const);
 template void Info::set<double>(key_t&, double*, int, bool, const key_t * const);
 template void Info::set<int>(key_t&, int*, int, bool, const key_t * const);
 template void Info::set<long int>(key_t&, long int*, int, bool, const key_t * const);
+template void Info::set<long long>(key_t&, long long*, int, bool, const key_t * const);
 template void Info::set<bool>(key_t&, bool*, int, bool, const key_t * const);
 template void Info::set<std::vector<std::string>>(key_t&, std::vector<std::string>*, int, bool, const key_t * const);
 
