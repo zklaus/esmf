@@ -718,7 +718,17 @@ install:
 	mkdir -p $(ESMF_INSTALL_MODDIR_ABSPATH)
 	cp -f $(ESMF_MODDIR)/*.mod $(ESMF_INSTALL_MODDIR_ABSPATH)
 	mkdir -p $(ESMF_INSTALL_LIBDIR_ABSPATH)
+	$(ESMF_RANLIB) $(ESMF_LIBDIR)/libesmf*.$(ESMF_LIB_SUFFIX)
+ifeq ($(ESMF_OS),MinGW)
+	mv $(ESMF_LIBDIR)/libesmf.dll $(ESMF_LIBDIR)/esmf.dll
+	mv $(ESMF_LIBDIR)/libesmf_fullylinked.dll $(ESMF_LIBDIR)/esmf_fullylinked.dll
+	mv $(ESMF_LIBDIR)/libesmf.lib $(ESMF_LIBDIR)/esmf.lib
+	cp -f $(ESMF_LIBDIR)/esmf.dll $(ESMF_INSTALL_LIBDIR_ABSPATH)
+	cp -f $(ESMF_LIBDIR)/esmf_fullylinked.dll $(ESMF_INSTALL_LIBDIR_ABSPATH)
+	cp -f $(ESMF_LIBDIR)/esmf.lib $(ESMF_INSTALL_LIBDIR_ABSPATH)
+else
 	cp -f $(ESMF_LIBDIR)/libesmf*.* $(ESMF_INSTALL_LIBDIR_ABSPATH)
+endif
 
 ifeq ($(ESMF_PIO),internal)
 	cp -f $(ESMF_LIBDIR)/libpioc.* $(ESMF_INSTALL_LIBDIR_ABSPATH)
@@ -739,7 +749,6 @@ ifeq ($(ESMF_TRACE_BUILD_SHARED),ON)
 	$(MAKE) ESMF_PRELOADDIR=$(ESMF_INSTALL_LIBDIR_ABSPATH) build_preload_script
 endif
 endif
-	$(ESMF_RANLIB) $(ESMF_INSTALL_LIBDIR_ABSPATH)/libesmf*.$(ESMF_LIB_SUFFIX)
 	$(MAKE) install_apps
 	mkdir -p $(ESMF_INSTALL_DOCDIR_ABSPATH)
 	@if [ -d $(ESMF_DOCDIR) ]; then \
