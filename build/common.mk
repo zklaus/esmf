@@ -4062,9 +4062,10 @@ shared:
 #-------------------------------------------------------------------------------
 defer:
 ifeq ($(ESMF_OS),MinGW)
+	$(file >$(ESMF_OBJDIR)/$@.lst, $(notdir $(wildcard $(ESMF_OBJDIR)/*.o)))
 	cd $(ESMF_OBJDIR) ; \
 	$(ESMF_AR) $(ESMF_ARCREATEFLAGS) $(ESMF_ARCREATEPREFIX)`$(ESMF_DIR)/scripts/path_mingw2win $(ESMFLIB)` \
-		$(notdir $(wildcard $(ESMF_OBJDIR)/*.o))
+		@$@.lst
 else
 	cd $(ESMF_OBJDIR) ; \
 	$(ESMF_AR) $(ESMF_ARCREATEFLAGS) $(ESMFLIB) \
